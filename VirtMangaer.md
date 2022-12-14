@@ -1,21 +1,17 @@
-# Notes about Virt-Manager
+# How to start a Virtual Machine (VM)
 
-## Creating a VM
-It's a good idea to create a storage volume in your custom storage pool
-if you're going to start a VM
+## What is this for?
+How to create a storage volume in your custom storage pool
 
-`Using the '+' symbol`
-
-- Add a name to your VM in the format `qcow2`
-- Add the capacity size
-- Leave unchecked `Allocate entire volume now`
-- Click `Finish`
-
-## Adding an existing VM
-When adding a VM, select `Import existing disk image`
-
-- Provide the storage path
-- Select the OS your installing
-- Provide the RAM and number of CPUs cores
-- Customize the install if you want
-- Start the VM!
+## Steps
+- Create a new Virtual Machine
+- Select `Local install media`
+- Select the iso
+- Give custom CPUs and Memory
+- Select `Select or create custom image` and then `Manage`
+- - Click the `+` symbol to create a storage volume
+- - Give name to qcow2 file
+- - Give custom storage size
+- - Leave unchecked `Allocate entire volume now`
+- - Click `Finish`
+- Start VM
