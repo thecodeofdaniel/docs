@@ -1,20 +1,28 @@
 # Editing Two Finger Scroll Speed via "libinput"
+
 `Option: "ScrollPixelDistance"`
 
-### Find your device ID for your touchpad
-        $ xinput
-### List the properties from touchpad
-        $ xinput list-props <device_id>
+## Find the Device __ID__ for Touchpad
 
-## How to change on the fly: 
-        $ xinput set-prop <device_id> <sub_id> <value>
-### Example     
-        $ xinput set-prop 12 318 45         
+        xinput
 
-# Make a Permanent Change
+## List the Properties
 
-`Default value: 15`
+        xinput list-props <device_id>
 
+## Change the Scroll Speed
+
+        xinput set-prop <device_id> <sub_id> <value>
+
+### Example
+
+        xinput set-prop 12 318 45
+
+## Make a Permanent Change
+
+- Add this piece of code to a file in this directory
+  - `/etc/X11/xorg.conf.d/`
+  -
         Section "InputClass"
                 Identifier "libinput touchpad catchall"
                 MatchIsTouchpad "on"
@@ -22,12 +30,7 @@
                 Driver "libinput"
                 Option "ScrollPixelDistance" "50"
         EndSection
-
-### Find Similar Examples in
-        /usr/share/X11/xorg.conf.d
-
-## Put this code in directory
-        /etc/X11/xorg.conf.d
-
-### With a name such as
-        39-libinput.conf
+- With a name such as
+  - `39-libinput.conf`
+- Find similar examples in
+  - `/usr/share/X11/xorg.conf.d`

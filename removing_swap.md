@@ -1,34 +1,21 @@
-# Removing Swap Partition
+# Removing Swap Partition on Pop!_OS
 
-## Pop!_OS
+- After deleting the encrypted swap partition you will be presented with a slow bootup time
 
-After deleting the encrypted swap partition you will be presented with a slow bootup time
+- In order to resolve this, delete the contents in this file
 
-In order to resolve this go to the
+        cd /etc/crypttab
 
-```
-$ cd /etc/crypttab
-```
-There will be a line including `UUID`
+- There will some text including a __UUID__
+  - Something like this...
+  - `cryptswap UUID=82fae514-4406-49c9-88e3-3a470dfcc030 /dev/urandom swap,plain,offset=1024,cipher=aes-xts-plain64,size=512`
+- Before deleting, check if the __UUID__ exists using `lsblk`
 
-Check if the `UUID` by using this command
+        lsblk -o NAME,SIZE,UUID,PARTUUID
+- If not, then delete the contents
 
-```
-$ lsblk -o NAME,SIZE,UUID,PARTUUID
-```
+## Edit the `/etc/fstab` file
 
-`grep` the following with the `UUID` in the crypttab page
-
-If it doesn't exist then remove that line in the file
-
-### Example
-
-cryptswap UUID=82fae514-4406-49c9-88e3-3a470dfcc030 /dev/urandom swap,plain,offset=1024,cipher=aes-xts-plain64,size=512
-
-<br />
-
-### Note: The following may not be necessary
-
-Comment out this line in the `fstab` file in the same directory `/etc`
-
-`# /dev/mapper/cryptswap  none  swap  defaults  0  0`
+- Comment out this line
+  - `/dev/mapper/cryptswap  none  swap  defaults  0  0`
+  

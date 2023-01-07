@@ -1,42 +1,43 @@
-# How to Change username in Linux
+# How to Change Username in Linux
 
-Ideally you should login as another user with sudo permissions
-(I believe you can login as root in order to perform these actions as well)
+## Things to take note of
 
+- Ideally you should login as another user or login as root
 
-## If you're going to login as another user
+## If Creating a New User
 
-Use this command to do so
+- Here's how...
 
-```# usermod -aG sudo <username>```
+        # usermod -aG sudo <username>
 
-## Changing Username
+## Changing the Username
 
-Now in order to change the username
+- Now in order to change the username
 
-```# usermod -l <new_name> <old_name> ```
+        # usermod -l <new_name> <old_name>
 
-In order to change the groups `<old_name>` was in to the new username
+- In order to change the groups `<old_name>` was in to the new username
 
-```# groupmod -n <new_name> <old_name> ```
+        # groupmod -n <new_name> <old_name>
 
-Confirm this by looking into old home directory of `<old_name>`
+- Confirm this by looking into old home directory of `<old_name>`
 
-```$ ls -ld /home/<old_name>```
+        ls -ld /home/<old_name>
 
-The owner and group owner should now be owned by `<new_name>`
+- The owner and group owner should now be owned by `<new_name>`
 
-## How to change username for Home Directory
+## Change Username for Home Directory
 
-```# usermod -d /home/<new_name> -m <new_name> ```
+- Here's how...
 
-Check to confirm
+        # usermod -d /home/<new_name> -m <new_name>
 
-```$ ls -ld /home/<new_name> ```
+- Check to confirm
 
+        ls -ld /home/<new_name>
 
-## Editing username in GDM login screen
+## Edit Username in GDM login screen
 
-```# usermod -c "<new_name>" <new_name>```
+- Here's how...
 
-## Your Done!
+        # usermod -c "<new_name>" <new_name>
