@@ -55,3 +55,40 @@
 - Hibernate
 
         sudo systemctl hibernate
+
+## Add "Hibernate" Option
+
+- Add extension
+  - Add manually from command line
+  - Install extension manager
+
+### Add Manually
+
+- Get extension's __UUID__
+
+        unzip -c ~/Downloads/openweather-extension@jenslody.de.v94.shell-extension.zip metadata.json | grep uuid
+
+  - UUID: `openweather-extension@jenslody.de`
+
+- Create the Destination Directory
+
+        mkdir -p ~/.local/share/gnome-shell/extensions/openweather-extension@jenslody.de
+
+- Unzip GNOME Extension
+
+        unzip -q ~/Downloads/openweather-extension@jenslody.de.v94.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/openweather-extension@jenslody.de/
+
+- Restart GNOME Shell
+  - Press \<Alt\> + \<F2\>, then enter `r` to restart
+
+- Open the GNOME extensions app and enable
+
+### Install extension manager
+
+- Install
+
+        sudo apt install gnome-shell-extension-manager
+
+- Look for the extension and `install` it
+
+## Install "System Action - Hibernate"
