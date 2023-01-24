@@ -56,13 +56,13 @@
 
         sudo systemctl hibernate
 
-## Add "Hibernate" Option
+## Add "Hibernate" GUI Option
 
 - Add extension
-  - Add manually from command line
-  - Install extension manager
+  - Manually
+  - Using extension manager
 
-### Add Manually
+### __Manually__
 
 - Get extension's __UUID__
 
@@ -83,12 +83,30 @@
 
 - Open the GNOME extensions app and enable
 
-### Install extension manager
+### __Using Extension Manager__
 
 - Install
 
         sudo apt install gnome-shell-extension-manager
 
-- Look for the extension and `install` it
+- Open extension manager and install
+  - `"System Action - Hibernate"`
 
-## Install "System Action - Hibernate"
+- Restart GNOME Shell
+  - Press \<Alt\> + \<F2\>, then enter `r` to restart
+
+## If you're on Ubuntu
+
+- Create this file `/etc/polkit-1/localauthority/10-vendor.d/com.ubuntu.desktop.pkla`
+
+- Insert this code in that file
+
+        [Enable hibernate in upower]
+        Identity=unix-user:*
+        Action=org.freedesktop.upower.hibernate
+        ResultActive=yes
+
+        [Enable hibernate in logind]
+        Identity=unix-user:*
+        Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;org.freedesktop.login1;org.freedesktop.login1.hibernate-multiple-sessions;org.freedesktop.login1.hibernate-ignore-inhibit
+        ResultActive=yes
