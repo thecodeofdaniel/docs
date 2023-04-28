@@ -38,7 +38,7 @@
 
 ## Update Kernel Options
 
-- Kernel stub
+- Kernel stub (This will edit the entries in /boot/efi/loader/entries/)
 
         sudo kernelstub -a "resume=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx resume_offset=xxxxxxx"
 
